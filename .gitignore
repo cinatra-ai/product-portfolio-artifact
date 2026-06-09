@@ -1,0 +1,18 @@
+# Dependencies (no lockfile is committed by design — see .github/workflows/ci.yml)
+node_modules/
+pnpm-lock.yaml
+
+# Build output (tsc emits to dist/ per tsconfig.json)
+dist/
+
+# Secrets — never commit
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
