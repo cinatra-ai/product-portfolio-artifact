@@ -32,6 +32,21 @@
           ]
         }
       },
+      "objectTypes": [
+        {
+          "type": "@cinatra-ai/product-portfolio-artifact:product-portfolio",
+          "claim": "dedicated",
+          "dispositions": {
+            "projection": "artifact-safe",
+            "pinnable": true,
+            "snapshotPolicy": "content",
+            "sensitivity": "normal"
+          },
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
       "skills": {
         "matchers": [
           "@cinatra-ai/product-portfolio-artifact:product-portfolio-matcher"
