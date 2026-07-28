@@ -15,9 +15,24 @@ export const productPortfolioArtifactManifest: SemanticArtifactManifest = {
       mimeTypes: ["text/markdown", "text/plain", "application/pdf"],
     },
   },
+  objectTypes: [
+    {
+      type: "@cinatra-ai/product-portfolio-artifact:product-portfolio",
+      claim: "dedicated",
+      dispositions: {
+        projection: "artifact-safe",
+        pinnable: true,
+        snapshotPolicy: "content",
+        sensitivity: "normal",
+      },
+      schema: {
+        type: "object",
+      },
+    },
+  ],
   skills: {
     matchers: [
-      "@cinatra-ai/product-portfolio-artifact:product-portfolio-matcher",
+      "@cinatra-ai/product-portfolio-matcher-skill:product-portfolio-matcher",
     ],
   },
   matcherConfidenceThreshold: 0.7,
