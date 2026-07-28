@@ -6,7 +6,7 @@ Install via the Cinatra marketplace: open the Extensions panel, search for Produ
 
 To configure, upload a document (Markdown, plain text, or PDF) that describes your product lines, pricing tiers, and feature inventory. The artifact runs the product-portfolio-matcher classifier and stores the file as a typed workspace artifact when classifier confidence is at or above 0.7. No environment variables or secrets are needed.
 
-For local development, clone the repo and run node extension-kind-gate.mjs to validate the extension. The source entry is src/index.ts; the matcher prompt is in skills/product-portfolio-matcher/SKILL.md. The cinatra.artifact block in package.json defines accepted MIME types and the matcher skill reference.
+For local development, clone the repo and run node extension-kind-gate.mjs to validate the extension. The source entry is src/index.ts; the matcher prompt is in the @cinatra-ai/product-portfolio-matcher-skill package. The cinatra.artifact block in package.json defines accepted MIME types and the matcher skill reference.
 
 API contract: the artifact exposes no HTTP endpoints. Agents receive stored artifact content through the Cinatra host context. The matcher skill returns a JSON object with three fields: matches (boolean), confidence (float 0–1), and rationale (string). Example: { "matches": true, "confidence": 0.91, "rationale": "Document contains named pricing tiers and a feature matrix." }.
 
