@@ -1,17 +1,10 @@
 name: truthful-attribution-gate
-# Thin caller for the org-reusable truthful-attribution-gate (cinatra-ai/ci),
-# per org attribution policy. Advisory WARN mode (rollout soak): findings are
-# annotated, the check is ALWAYS green — it never fails a PR. No
-# .github/gate-suite.json is committed (WARN scope exercises presence + the
-# human arm; the gate-suite arm is not exercised without a suite).
-#
-# The engine is pinned by SHA below — the cinatra-ai/ci `main` HEAD proven green
-# in the ENFORCE caller today. The SHA and the with.ref value are the
-# authoritative immutable pin; the trailing version comment on the `uses:` line
-# is the semver build-metadata marker required by this repo's actions-pinned-gate
-# format check (every remote `uses:` ref must carry a `# vX.Y.Z` version comment).
-# The marker names the exact pinned commit, which is one commit past the engine's
-# released tag, rather than asserting the SHA equals that tag.
+# Thin caller for the organization's reusable truthful-attribution-gate. The
+# engine is pinned twice, in the uses: line and in the ref: input, and both
+# name the same commit of the shared engine, one the organization's merge
+# machinery accepts. The comment on the uses: line is a build marker of that
+# commit for the pinned-action gate, not a release tag. A maintained rollout
+# tool moves both pins together with this repository's check suite.
 
 on:
   pull_request:
@@ -32,7 +25,7 @@ permissions:
 
 jobs:
   truthful-attribution-gate:                 # caller job id MUST stay this exact string
-    uses: cinatra-ai/ci/.github/workflows/truthful-attribution-gate.yml@8eede1022e835997d94974e4bd6205daf72131a2 # v0.1.0+sha.8eede10
+    uses: cinatra-ai/ci/.github/workflows/truthful-attribution-gate.yml@1e40675e1642dcc32d195f27b3deb285b4d3d6fc # v0+engine.1e40675e.grant.2
     with:
       mode: warn
-      ref: 8eede1022e835997d94974e4bd6205daf72131a2
+      ref: 1e40675e1642dcc32d195f27b3deb285b4d3d6fc # engine 1e40675e, grant revision 2
